@@ -7,6 +7,7 @@ import { useContext } from "react";
 import { UserContext } from "../../contexts/userContext";
 
 import "react-toastify/dist/ReactToastify.css";
+import { PulseLoader } from "react-spinners";
 
 export const LoginPage = () => {
     const { login, loading } = useContext(UserContext);
@@ -48,7 +49,17 @@ export const LoginPage = () => {
                             {errors?.password ? errors.password.message : null}
                         </span>
                     </section>
-                    <button disabled={loading}>Entrar</button>
+                    {loading === false ? (
+                        <button>Entrar</button>
+                    ) : (
+                        <button>
+                            <PulseLoader
+                                color="#36d7b7"
+                                size={10}
+                                speedMultiplier={0.7}
+                            />
+                        </button>
+                    )}
                 </form>
             </StyledContainerLogin>
         </>

@@ -198,7 +198,7 @@ export const UserProvider = ({ children }) => {
             setLoading(true);
             await api.delete(`/clients/${data.id}`);
             setObserver(observer + 1);
-            toast.success("Pedido deletado");
+            toast.success("Cliente deletado");
         } catch (error) {
             console.log(error);
             toast.error("Algo deu errado, tente novamente");

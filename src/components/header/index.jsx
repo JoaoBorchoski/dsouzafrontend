@@ -3,10 +3,9 @@ import { useContext } from "react";
 import { UserContext } from "../../contexts/userContext";
 import { MdExitToApp } from "react-icons/md";
 import logo from "../../img/dsouzaimage.jpeg";
-//import svg from ".../../img/svgDsouzaimage.svg";
 
 export const Header = () => {
-    const { user, logout, setPage, setFinishedPage } = useContext(UserContext);
+    const { logout, setPage, setFinishedPage } = useContext(UserContext);
 
     return (
         <StyledHeader>
