@@ -25,6 +25,9 @@ export const StyledModalOrder = styled.div`
             display: flex;
             justify-content: space-between;
 
+            button {
+            }
+
             > :nth-last-child(1) {
                 width: 48%;
                 border-radius: 8px;
@@ -36,6 +39,10 @@ export const StyledModalOrder = styled.div`
                 display: flex;
                 justify-content: center;
                 align-items: center;
+
+                @media (max-width: 1000px) {
+                    height: 45px;
+                }
             }
 
             > :nth-last-child(2) {
@@ -49,6 +56,10 @@ export const StyledModalOrder = styled.div`
                 display: flex;
                 justify-content: center;
                 align-items: center;
+
+                @media (max-width: 1000px) {
+                    height: 45px;
+                }
             }
         }
     }

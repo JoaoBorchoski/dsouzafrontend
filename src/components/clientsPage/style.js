@@ -71,6 +71,10 @@ export const StyledModalClient = styled.div`
             display: flex;
             justify-content: center;
             align-items: center;
+
+            @media (max-width: 1000px) {
+                height: 45px;
+            }
         }
     }
 `;

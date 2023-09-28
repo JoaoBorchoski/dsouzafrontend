@@ -1,14 +1,16 @@
 import { useContext, useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { UserContext } from "../../contexts/userContext";
-import { StyledModalOrder } from "../../components/orderPage/style";
 import Modal from "react-modal";
+import { StyledModalOrderFinished } from "./style";
 
 export const FinishedOrders = () => {
-    const { orders, setFinishedPage } = useContext(UserContext);
+    const { orders, setFinishedPage, submitDeleteOrder, loading } =
+        useContext(UserContext);
 
     const [busca, setBusca] = useState("");
     const lowerBusca = busca.toLowerCase();
+    const [deleteOrder, setDeleteOrder] = useState(false);
 
     const [orderModal, setOrderModal] = useState({
         id: 1,
@@ -117,7 +119,7 @@ export const FinishedOrders = () => {
                 style={customStyles}
                 contentLabel="Example Modal"
             >
-                <StyledModalOrder>
+                <StyledModalOrderFinished>
                     <section>
                         <h2>Descrição do pedido</h2>
                         <button onClick={toggleModal}>X</button>
@@ -138,15 +140,28 @@ export const FinishedOrders = () => {
                                     : "Em andamento"}
                             </span>
                         </p>
-                        <button
-                            onClick={() => {
-                                console.log(orderModal);
-                            }}
-                        >
-                            Deletar pedido
-                        </button>
+                        {deleteOrder === false ? (
+                            <button
+                                onClick={() => {
+                                    setDeleteOrder(true);
+                                }}
+                            >
+                                Deletar pedido
+                            </button>
+                        ) : (
+                            <button
+                                disabled={loading}
+                                onClick={() => {
+                                    submitDeleteOrder(orderModal);
+                                    setDeleteOrder(false);
+                                    setModalOrder(false);
+                                }}
+                            >
+                                Confirmar deleção?
+                            </button>
+                        )}
                     </div>
-                </StyledModalOrder>
+                </StyledModalOrderFinished>
             </Modal>
         </>
     );

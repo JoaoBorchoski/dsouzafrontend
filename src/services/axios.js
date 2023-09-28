@@ -1,5 +1,7 @@
 import axios from "axios";
 
 export const api = axios.create({
-    baseURL: "https://dsouza.onrender.com",
+    baseURL: "http://localhost:3001",
 });
+
+//https://dsouza.onrender.com

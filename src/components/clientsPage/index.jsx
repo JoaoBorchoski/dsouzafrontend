@@ -9,13 +9,18 @@ import { useForm } from "react-hook-form";
 import { Input } from "../input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { clientSchema } from "../../schemas/clientsSchemas";
-import { StyledModalOrder } from "../orderPage/style";
 
 Modal.setAppElement("#root");
 
 const Clientes = () => {
-    const { clients, addClient, setAddClient, submitClient, submitDeleteUser } =
-        useContext(UserContext);
+    const {
+        clients,
+        addClient,
+        setAddClient,
+        submitClient,
+        submitDeleteUser,
+        loading,
+    } = useContext(UserContext);
     const [busca, setBusca] = useState("");
     const [modalClient, setModalCliente] = useState(false);
     const [client, setClient] = useState({
@@ -180,7 +185,7 @@ const Clientes = () => {
                             </span>
                         </section>
 
-                        <button>Criar</button>
+                        <button disabled={loading}>Criar</button>
                     </form>
                 </StyledModal>
             </Modal>
@@ -207,6 +212,7 @@ const Clientes = () => {
                             </button>
                         ) : (
                             <button
+                                disabled={loading}
                                 onClick={() => {
                                     submitDeleteUser(client);
                                     setDeleteClient(false);
@@ -216,43 +222,6 @@ const Clientes = () => {
                                 Confirmar
                             </button>
                         )}
-
-                        {/* <section>
-                            {finishedOrder === false ? (
-                                <button onClick={() => setFinishedOrder(true)}>
-                                    Finalizar pedido
-                                </button>
-                            ) : (
-                                <button
-                                    onClick={() => {
-                                        submitDeleteUser(orderModal);
-                                        setFinishedOrder(false);
-                                        setModalOrder(false);
-                                    }}
-                                >
-                                    Confirmar
-                                </button>
-                            )}
-                            {deleteOrder === false ? (
-                                <button
-                                    onClick={() => {
-                                        setDeleteOrder(true);
-                                    }}
-                                >
-                                    Deletar pedido
-                                </button>
-                            ) : (
-                                <button
-                                    onClick={() => {
-                                        submitDeleteOrder(orderModal);
-                                        setDeleteOrder(false);
-                                        setModalOrder(false);
-                                    }}
-                                >
-                                    Confirmar deleção?
-                                </button>
-                            )}
-                        </section> */}
                     </div>
                 </StyledModalClient>
             </Modal>

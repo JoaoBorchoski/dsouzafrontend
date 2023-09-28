@@ -22,6 +22,7 @@ const Pedidos = () => {
         setFinishedPage,
         submitDeleteOrder,
         sumbitUpdateOrder,
+        loading,
     } = useContext(UserContext);
 
     const [busca, setBusca] = useState("");
@@ -240,7 +241,7 @@ const Pedidos = () => {
                             </span>
                         </section>
 
-                        <button>Criar</button>
+                        <button disabled={loading}>Criar</button>
                     </form>
                 </StyledModal>
             </Modal>
@@ -278,6 +279,7 @@ const Pedidos = () => {
                                 </button>
                             ) : (
                                 <button
+                                    disabled={loading}
                                     onClick={() => {
                                         sumbitUpdateOrder(orderModal);
                                         setFinishedOrder(false);
@@ -297,6 +299,7 @@ const Pedidos = () => {
                                 </button>
                             ) : (
                                 <button
+                                    disabled={loading}
                                     onClick={() => {
                                         submitDeleteOrder(orderModal);
                                         setDeleteOrder(false);

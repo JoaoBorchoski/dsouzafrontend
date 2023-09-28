@@ -111,7 +111,6 @@ export const StyledDivMain = styled.div`
             }
 
             @media (max-width: 1000px) {
-                padding: 0;
                 flex-direction: column;
                 align-items: start;
                 height: 30%;

@@ -6,6 +6,8 @@ import { loginSchema } from "../../schemas/userSchemas";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/userContext";
 
+import "react-toastify/dist/ReactToastify.css";
+
 export const LoginPage = () => {
     const { login, loading } = useContext(UserContext);
 
@@ -17,8 +19,6 @@ export const LoginPage = () => {
         mode: "onBlur",
         resolver: zodResolver(loginSchema),
     });
-
-    // const submit = (data) => console.log(data);
 
     return (
         <>
