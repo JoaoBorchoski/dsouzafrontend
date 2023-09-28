@@ -7,7 +7,7 @@ import { useContext } from "react";
 import { UserContext } from "../../contexts/userContext";
 
 export const LoginPage = () => {
-    const { login } = useContext(UserContext);
+    const { login, loading } = useContext(UserContext);
 
     const {
         register,
@@ -48,7 +48,7 @@ export const LoginPage = () => {
                             {errors?.password ? errors.password.message : null}
                         </span>
                     </section>
-                    <button>Entrar</button>
+                    <button disabled={loading}>Entrar</button>
                 </form>
             </StyledContainerLogin>
         </>

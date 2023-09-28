@@ -14,6 +14,7 @@ export const UserProvider = ({ children }) => {
     const [addOrder, setAddOrder] = useState(false);
     const [finishedPage, setFinishedPage] = useState(false);
     const [observer, setObserver] = useState(0);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         async function infos() {
@@ -98,6 +99,7 @@ export const UserProvider = ({ children }) => {
 
     const login = async (data) => {
         try {
+            setLoading(true);
             const response = await api.post("/login", data);
             localStorage.setItem("@TOKEN", JSON.stringify(response.data.token));
             localStorage.setItem("@ID", JSON.stringify(response.data.user.id));
@@ -112,6 +114,8 @@ export const UserProvider = ({ children }) => {
             navigate("/home");
         } catch (error) {
             console.log(error);
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -200,6 +204,8 @@ export const UserProvider = ({ children }) => {
                 submitDeleteOrder,
                 sumbitUpdateOrder,
                 submitDeleteUser,
+                loading,
+                setLoading,
             }}
         >
             {children}
