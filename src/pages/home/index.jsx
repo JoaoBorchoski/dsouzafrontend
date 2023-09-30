@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Header } from "../../components/header";
 import { StyledDivMain } from "./styles";
 import { UserContext } from "../../contexts/userContext";
@@ -7,7 +7,13 @@ import { Clientes } from "../../components/clientsPage";
 import { FinishedOrders } from "../finishedOrders";
 
 export const Home = () => {
-    const { page, finishedPage } = useContext(UserContext);
+    const { page, finishedPage, user, navigate } = useContext(UserContext);
+
+    useEffect(() => {
+        if (!user) {
+            navigate("/");
+        }
+    });
 
     return (
         <>
